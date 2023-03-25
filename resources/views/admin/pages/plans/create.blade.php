@@ -11,7 +11,7 @@
 <link href="/css/boostrap.css" rel="stylesheet"> <! adicionando o boostrap !>
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('plans.store') }}" class="form" method="POST"></form>
+            <form action="{{ route('plans.store') }}" class="form" method="POST">
                 @csrf
                 <div class="form-group">
                     <label>Nome:</label>

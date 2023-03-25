@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PlanController extends Controller
 {
@@ -28,9 +29,13 @@ class PlanController extends Controller
     {
         return view('admin.pages.plans.create');
     }
-    
+
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = $request->all();
+        $data['url'] = Str::of($request->name)->kebab();
+        $this->repository->create($data);
+    
+        return redirect()->route('plans.index');
     }
 }
