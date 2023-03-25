@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-<link href="/css/boostrap.css" rel="stylesheet"> <! adicionando o boostrap !>
+
     <div class="card">
         <div class="card-header">
             <form action="{{ route('plans.search')}}"  class="form form-inline">

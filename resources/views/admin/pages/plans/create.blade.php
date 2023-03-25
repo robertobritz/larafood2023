@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-<link href="/css/boostrap.css" rel="stylesheet"> <! adicionando o boostrap !>
+
     <div class="card">
         <div class="card-body">
             <form action="{{ route('plans.store') }}" class="form" method="POST">
