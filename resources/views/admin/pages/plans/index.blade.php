@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+<link href="/css/boostrap.css" rel="stylesheet"> <! adicionando o boostrap !>
     <div class="card">
         <div class="card-header">
             #filtros
@@ -30,7 +31,7 @@
                                 {{ $plan->price}}
                             </td>
                             <td width="50">
-                                <a href="" class="btn btn-warnig">VER</a>
+                                <a href="" class="btn btn-warning">VER</a>
                             </td>
                         </tr>
                     @endforeach
