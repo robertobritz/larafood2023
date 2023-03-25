@@ -21,7 +21,7 @@ Route::get('admin/plans/{url}', [Admin\PlanController::class, 'show'])->name('pl
 Route::post('admin/plans', [Admin\PlanController::class, 'store'])->name('plans.store');
 Route::get('admin/plans', [Admin\PlanController::class, 'index'])->name('plans.index');
 
-
+Route::get('admin', [Admin\PlanController::class, 'index'])->name('admin.index');
 
 Route::get('/', function () {
     return view('welcome');
