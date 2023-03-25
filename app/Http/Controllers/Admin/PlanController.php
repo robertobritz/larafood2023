@@ -62,4 +62,16 @@ class PlanController extends Controller
 
         return redirect()->route('plans.index');
     }
+
+    public function search(Request $request)
+    {
+        $filters = $request->except('_token'); //para quando for utilizado o filtro, não passar o código do token
+
+        $plans = $this->repository->search($request->filter); //método search foi incluido na model Plan, onde ele seleciona os filtros
+        
+        return view('admin.pages.plans.index', [
+            'plans' => $plans,
+            'filters' => $filters // serve para mandar para a view o filtro, só existe no método search, para não perder a paginação
+        ]);
+    }
 }

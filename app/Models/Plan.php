@@ -10,4 +10,11 @@ class Plan extends Model
     use HasFactory; //não sei o que é
     protected $fillable = ['name', 'url', 'price', 'description'];
 
+    public function search($filter = null)
+    {
+        $results = $this->where('name', 'LIKE', "%{$filter}%")
+                        ->orWhere('description', 'LIKE', "%{$filter}%")
+                        ->paginate();
+        return $results;
+    }
 }
