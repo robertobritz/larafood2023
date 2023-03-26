@@ -1,0 +1,28 @@
+0000000000000000000000000000000000000000 833abb433ea771e6643970557334248b4cb78642 Roberto <roberto.britz@hotmail.com> 1679768553 -0300	clone: from https://github.com/robertobritz/larafood2023
+833abb433ea771e6643970557334248b4cb78642 d9b52c5eaeae439d174be08a0498b30608a5f5cd Roberto <roberto.britz@hotmail.com> 1679769069 -0300	commit: Bootstrap
+d9b52c5eaeae439d174be08a0498b30608a5f5cd 19d2037cb738011786fa3b81884bd283ff133a67 Roberto <roberto.britz@hotmail.com> 1679769541 -0300	commit: Fixin bootstrap
+19d2037cb738011786fa3b81884bd283ff133a67 7268d93096f536b785b418d5f38bdf0b81300c75 Roberto <roberto.britz@hotmail.com> 1679769560 -0300	commit: Fixin Bootstrap
+7268d93096f536b785b418d5f38bdf0b81300c75 240ac3ae5baa4a8cefb10880701e6d76372ffee9 Roberto <roberto.britz@hotmail.com> 1679772218 -0300	commit: Create_plan
+240ac3ae5baa4a8cefb10880701e6d76372ffee9 158e3f14312fc33419af860b1da5dc1cc58bf3d7 Roberto <roberto.britz@hotmail.com> 1679774572 -0300	commit: Finish Plan
+158e3f14312fc33419af860b1da5dc1cc58bf3d7 69721460f4bbbd694258f29ff5adfb221e1398c9 Roberto <roberto.britz@hotmail.com> 1679775292 -0300	commit: ShowPlans
+69721460f4bbbd694258f29ff5adfb221e1398c9 13e28955c728cea5402ead6002b034f3d5638364 Roberto <roberto.britz@hotmail.com> 1679776020 -0300	commit: FinishShowPlans
+13e28955c728cea5402ead6002b034f3d5638364 61409e00d09f27a705dad33606b80f103b421afc Roberto <roberto.britz@hotmail.com> 1679780019 -0300	commit: SearchFinish
+61409e00d09f27a705dad33606b80f103b421afc 6db27c4a5a7bdcfdd9f1d3a067b15e23cd3432ee Roberto <roberto.britz@hotmail.com> 1679780429 -0300	commit: breadcrumb
+6db27c4a5a7bdcfdd9f1d3a067b15e23cd3432ee 3cafdd4d0cb9563ac2445842a9c8efc2e93a60f3 Roberto <roberto.britz@hotmail.com> 1679785642 -0300	commit: AddIcon
+3cafdd4d0cb9563ac2445842a9c8efc2e93a60f3 a3294b81ccde3509b16d43bbb86a93fd8eb5c161 Roberto <roberto.britz@hotmail.com> 1679785867 -0300	commit: Removingtrash
+a3294b81ccde3509b16d43bbb86a93fd8eb5c161 5cb2ae7a64dc48ec65af93d51c6b149d5ee7206e Roberto <roberto.britz@hotmail.com> 1679848789 -0300	commit: EditPlan finish
+5cb2ae7a64dc48ec65af93d51c6b149d5ee7206e f9b7cc830bffd7db2ad5428329d0eb7acab4dc6c Roberto <roberto.britz@hotmail.com> 1679850830 -0300	commit: AddObservertoURLPlan
+f9b7cc830bffd7db2ad5428329d0eb7acab4dc6c 6291c1a5408eddd717dc80382bdfa48bd752e9ab Roberto <roberto.britz@hotmail.com> 1679850856 -0300	commit: addObserverToPlanURL
+6291c1a5408eddd717dc80382bdfa48bd752e9ab 4b8cf994424f1ea8d9ac1ef4a0b691a1c5ac1e90 Roberto <roberto.britz@hotmail.com> 1679852610 -0300	commit: resumeroute
+4b8cf994424f1ea8d9ac1ef4a0b691a1c5ac1e90 ae5789ddf8311e5bf2dfd44142c4c4e2d0f4d92a Roberto <roberto.britz@hotmail.com> 1679855226 -0300	commit: ListDetail
+ae5789ddf8311e5bf2dfd44142c4c4e2d0f4d92a 39f843455880356971afd5e64eb5357ecd5c5aae Roberto <roberto.britz@hotmail.com> 1679858043 -0300	commit: AddDetails
+39f843455880356971afd5e64eb5357ecd5c5aae 54f22e871d812c2f66e4009db186dedc8f3a8c1a Roberto <roberto.britz@hotmail.com> 1679858084 -0300	commit: AddDetails
+54f22e871d812c2f66e4009db186dedc8f3a8c1a e85ba0fd0b031af9ef27d1235acec10a8018f157 Roberto <roberto.britz@hotmail.com> 1679859233 -0300	commit: ValidationEditDetail
+e85ba0fd0b031af9ef27d1235acec10a8018f157 4834fdac479aef323bbf32f539bf19b8b185c543 Roberto <roberto.britz@hotmail.com> 1679860080 -0300	commit: DeleteDetails
+4834fdac479aef323bbf32f539bf19b8b185c543 4fae19b1ec7cf39342eeed268600f10fdaca984d Roberto <roberto.britz@hotmail.com> 1679860108 -0300	commit: DeleteDetails
+4fae19b1ec7cf39342eeed268600f10fdaca984d c5070ff0d7c433fe9860753aaefa969d24a3cdf5 Roberto <roberto.britz@hotmail.com> 1679862551 -0300	commit: FinishDescription
+c5070ff0d7c433fe9860753aaefa969d24a3cdf5 cfd9e2e98463c16288e23796c003cad7ec168021 Roberto <roberto.britz@hotmail.com> 1679864552 -0300	commit: Erro ao criar Controller
+cfd9e2e98463c16288e23796c003cad7ec168021 1cadf139548cd389346001e0e960387a98dd0b75 Roberto <roberto.britz@hotmail.com> 1679864561 -0300	commit: erro ao criar o controller
+1cadf139548cd389346001e0e960387a98dd0b75 4834fdac479aef323bbf32f539bf19b8b185c543 Roberto <roberto.britz@hotmail.com> 1679864570 -0300	checkout: moving from main to 4834fdac479aef323bbf32f539bf19b8b185c543
+4834fdac479aef323bbf32f539bf19b8b185c543 4fae19b1ec7cf39342eeed268600f10fdaca984d Roberto <roberto.britz@hotmail.com> 1679864625 -0300	checkout: moving from 4834fdac479aef323bbf32f539bf19b8b185c543 to 4fae19b1ec7cf39342eeed268600f10fdaca984d
+4fae19b1ec7cf39342eeed268600f10fdaca984d 7aa7adb7140b0405ba615f5a09df1783137cb08a Roberto <roberto.britz@hotmail.com> 1679865130 -0300	commit: Corrigindo bugs
