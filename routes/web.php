@@ -17,6 +17,11 @@ use App\Http\Controllers\Admin\PlanController;
 Route::prefix('admin')
         ->namespace('Admin')
         ->group(function(){
+    //Routes Profile
+    Route::resource('profiles', [ACL\DetailPlanController::class, 'create']);
+
+
+    //Routes Details
             
     Route::get('plans/{url}/details/create', [DetailPlanController::class, 'create'])->name('details.plan.create');        
     Route::delete('plans/{url}/details/{idDetail}', [DetailPlanController::class, 'destroy'])->name('details.plan.destroy');
