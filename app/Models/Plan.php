@@ -10,6 +10,11 @@ class Plan extends Model
     use HasFactory; //não sei o que é
     protected $fillable = ['name', 'url', 'price', 'description'];
 
+    public function details()
+    {
+        return $this->hasMany(DetailPlan::class);
+    }
+
     public function search($filter = null)
     {
         $results = $this->where('name', 'LIKE', "%{$filter}%")
@@ -17,4 +22,6 @@ class Plan extends Model
                         ->paginate();
         return $results;
     }
+
+
 }
