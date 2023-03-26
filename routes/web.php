@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin;
 */
 
 Route::get('admin/plans/create', [Admin\PlanController::class, 'create'])->name('plans.create');
+Route::put('admin/plans/{url}', [Admin\PlanController::class, 'update'])->name('plans.update');
+Route::get('admin/plans/{url}/edit', [Admin\PlanController::class, 'edit'])->name('plans.edit');
 Route::any('admin/plans/search', [Admin\PlanController::class, 'search'])->name('plans.search');
 Route::delete('admin/plans/{url}', [Admin\PlanController::class, 'destroy'])->name('plans.destroy');
 Route::get('admin/plans/{url}', [Admin\PlanController::class, 'show'])->name('plans.show');

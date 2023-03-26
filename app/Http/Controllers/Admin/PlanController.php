@@ -74,4 +74,27 @@ class PlanController extends Controller
             'filters' => $filters // serve para mandar para a view o filtro, só existe no método search, para não perder a paginação
         ]);
     }
+
+    public function edit($url)
+    {
+        $plan = $this->repository->where('url', $url)->first();
+
+        if (!$plan)
+            return redirect()->back();
+
+        return view('admin.pages.plans.edit',[
+            'plan' => $plan
+        ]);
+    }
+
+    public function update(Request $request, $url){
+        $plan = $this->repository->where('url', $url)->first();
+
+        if (!$plan)
+            return redirect()->back();
+
+        $plan->update($request->all());
+
+        return redirect()->route('plans.index');
+    }
 }
