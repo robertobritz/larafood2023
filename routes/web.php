@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ACL\ProfileController;
 use App\Http\Controllers\Admin\DetailPlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PlanController;
@@ -14,14 +15,15 @@ use App\Http\Controllers\Admin\PlanController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+    //Routes Profile
+
+    Route::resource('admin/profiles', 'App\Http\Controllers\Admin\ACL\ProfileController');
+    
 Route::prefix('admin')
         ->namespace('Admin')
         ->group(function(){
-    //Routes Profile
-    Route::resource('profiles', [ACL\DetailPlanController::class, 'create']);
-
-
-    //Routes Details
+ 
+    //Routes Details 
             
     Route::get('plans/{url}/details/create', [DetailPlanController::class, 'create'])->name('details.plan.create');        
     Route::delete('plans/{url}/details/{idDetail}', [DetailPlanController::class, 'destroy'])->name('details.plan.destroy');
@@ -46,7 +48,8 @@ Route::prefix('admin')
     //Home Dashboard
     Route::get('/', [PlanController::class, 'index'])->name('admin.index');
 });
-
+    //Route::resource('profiles', 'App\Http\Controllers\Admin\ACL\ProfileController');
+    
 
 
 
