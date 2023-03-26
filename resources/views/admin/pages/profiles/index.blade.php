@@ -14,9 +14,9 @@
 
     <div class="card">
         <div class="card-header">
-            <form action="{{ route('plans.search')}}"  class="form form-inline">
+            <form action="{{ route('profiles.search')}}"  class="form form-inline">
                 @csrf 
-                <input type="text" name='filter' placeholder="Nome" class="form-control" value="{{ $filters['filter'] ?? ''}}">
+                <input type="text" name='filter' placeholder="Filtro" class="form-control" value="{{ $filters['filter'] ?? ''}}">
                 <button type="submit" class="btn btn-dark">Filtrar</button>
             </form>
         </div>

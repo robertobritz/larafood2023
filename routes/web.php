@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\PlanController;
 */
     //Routes Profile
 
+    Route::any('admin/profiles/search', 'App\Http\Controllers\Admin\ACL\ProfileController@search')->name('profiles.search');
     Route::resource('admin/profiles', 'App\Http\Controllers\Admin\ACL\ProfileController');
     
 Route::prefix('admin')
