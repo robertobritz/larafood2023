@@ -3,7 +3,10 @@
         @foreach ($errors->all() as $error)
         <p>{{ $error }}</p>
         @endforeach 
-	@@ -10,4 +10,10 @@
+    </div>  
+@endif
+
+@if (session('message')) 
     <div class="alert alert-success">
         {{ session('message') }}
     </div>

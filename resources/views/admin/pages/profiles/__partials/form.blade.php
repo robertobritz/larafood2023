@@ -1,3 +1,6 @@
+<div>@include('admin.includes.alerts')</div>
+
+
 @csrf
 
 <div class="form-group">
