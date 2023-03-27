@@ -15,6 +15,11 @@ use App\Http\Controllers\Admin\PlanController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+    //Permission x Profile
+    Route::any('admin/profiles/{id}/permissions', 'App\Http\Controllers\Admin\ACL\PermissionProfileController@permissions')->name('profiles.permissions');
+    
+
+    
     //Routes Permission
 
     Route::any('admin/permissions/search', 'App\Http\Controllers\Admin\ACL\PermissionController@search')->name('permissions.search');
