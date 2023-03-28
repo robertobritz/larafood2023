@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PlanController;
 |
 */
     //Permission x Profile
+    Route::get('admin/profiles/{id}/permission/{idPermission}/detach', 'App\Http\Controllers\Admin\ACL\PermissionProfileController@detachPermissionProfile')->name('profiles.permission.detach');
     Route::any('admin/profiles/{id}/permissions/create', 'App\Http\Controllers\Admin\ACL\PermissionProfileController@permissionsAvailable')->name('profiles.permissions.available');
     Route::post('admin/profiles/{id}/permissions', 'App\Http\Controllers\Admin\ACL\PermissionProfileController@attachPermissionsProfile')->name('profiles.permissions.attach');
     Route::get('admin/profiles/{id}/permissions', 'App\Http\Controllers\Admin\ACL\PermissionProfileController@permissions')->name('profiles.permissions');
