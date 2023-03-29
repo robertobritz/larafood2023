@@ -25,7 +25,7 @@
                <thead>
                 <tr>
                     <th>Nome</th>
-                    <th width="600px">Ação</th>
+                    <th width="450px">Ação</th>
                 </tr>
                 </thead>
                 <tbody>
