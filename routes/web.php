@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\ACL\ProfileController;
 use App\Http\Controllers\Admin\DetailPlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PlanController;
+use App\Http\Controllers\Site\SiteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +29,6 @@ use App\Http\Controllers\Admin\PlanController;
 
     Route::any('admin/profiles/search', 'App\Http\Controllers\Admin\ACL\ProfileController@search')->name('profiles.search')->middleware('auth');
     Route::resource('admin/profiles', 'App\Http\Controllers\Admin\ACL\ProfileController')->middleware('auth');
-
-
 
     Route::prefix('admin')
     ->namespace('Admin\ACL')
@@ -54,7 +54,7 @@ use App\Http\Controllers\Admin\PlanController;
     });
 
 
-Route::prefix('admin')
+    Route::prefix('admin')
         ->namespace('Admin')
         ->middleware('auth')
         ->group(function(){
@@ -82,14 +82,12 @@ Route::prefix('admin')
     Route::get('plans', [PlanController::class, 'index'])->name('plans.index');
 
     //Home Dashboard
-    Route::get('/', [PlanController::class, 'index'])->name('admin.index');
+    //Route::get('/', [PlanController::class, 'index'])->name('admin.index');
 });
     
-    //Routes create by the login
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('/', [SiteController::class, 'index'])->name('site.home');
 
+    //Routes create by the login
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
