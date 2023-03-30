@@ -8,6 +8,7 @@
 @stop
 
 @section('content')
+
     <div class="card">
         <div class="card-body">
             <ul>
@@ -30,7 +31,7 @@
             <form action="{{ route('plans.destroy', $plan->url)}}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i>DELETAR O PLANO {{ $plan->name}}</button>
+                <button type="submit" class="btn btn-danger"><i class="fas fa-lock"></i>DELETAR O PLANO {{ $plan->name}}</button>
             </form>
         </div>
     </div>

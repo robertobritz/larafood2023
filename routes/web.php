@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ACL\PermissionProfileController;
+use App\Http\Controllers\Admin\ACL\PlanProfileController;
 use App\Http\Controllers\Admin\ACL\ProfileController;
 use App\Http\Controllers\Admin\DetailPlanController;
 use Illuminate\Support\Facades\Route;
@@ -15,37 +17,46 @@ use App\Http\Controllers\Admin\PlanController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */  
-    /**
-     * Plan x Profile
-     */
-    Route::get('admin/plans/{id}/profile/{idProfile}/detach', 'App\Http\Controllers\Admin\ACL\PlanProfileController@detachProfilePlan')->name('plans.profile.detach');
-    Route::post('admin/plans/{id}/profiles', 'App\Http\Controllers\Admin\ACL\PlanProfileController@attachProfilesPlan')->name('plans.profiles.attach');
-    Route::any('admin/plans/{id}/profiles/create', 'App\Http\Controllers\Admin\ACL\PlanProfileController@profilesAvailable')->name('plans.profiles.available');
-    Route::get('admin/plans/{id}/profiles', 'App\Http\Controllers\Admin\ACL\PlanProfileController@profiles')->name('plans.profiles');
-    Route::get('admin/profiles/{id}/plans', 'App\Http\Controllers\Admin\ACL\PlanProfileController@plans')->name('profiles.plans');
 
-
-    //Permission x Profile
-    Route::get('admin/profiles/{id}/permission/{idPermission}/detach', 'App\Http\Controllers\Admin\ACL\PermissionProfileController@detachPermissionProfile')->name('profiles.permission.detach');
-    Route::any('admin/profiles/{id}/permissions/create', 'App\Http\Controllers\Admin\ACL\PermissionProfileController@permissionsAvailable')->name('profiles.permissions.available');
-    Route::post('admin/profiles/{id}/permissions', 'App\Http\Controllers\Admin\ACL\PermissionProfileController@attachPermissionsProfile')->name('profiles.permissions.attach');
-    Route::get('admin/profiles/{id}/permissions', 'App\Http\Controllers\Admin\ACL\PermissionProfileController@permissions')->name('profiles.permissions');
-    Route::get('admin/permissions/{id}/profile', 'App\Http\Controllers\Admin\ACL\PermissionProfileController@profiles')->name('permissions.profiles');
-    
-
-    
     //Routes Permission
 
-    Route::any('admin/permissions/search', 'App\Http\Controllers\Admin\ACL\PermissionController@search')->name('permissions.search');
-    Route::resource('admin/permissions', 'App\Http\Controllers\Admin\ACL\PermissionController');
+    Route::any('admin/permissions/search', 'App\Http\Controllers\Admin\ACL\PermissionController@search')->name('permissions.search')->middleware('auth');
+    Route::resource('admin/permissions', 'App\Http\Controllers\Admin\ACL\PermissionController')->middleware('auth');
 
     //Routes Profile
 
-    Route::any('admin/profiles/search', 'App\Http\Controllers\Admin\ACL\ProfileController@search')->name('profiles.search');
-    Route::resource('admin/profiles', 'App\Http\Controllers\Admin\ACL\ProfileController');
+    Route::any('admin/profiles/search', 'App\Http\Controllers\Admin\ACL\ProfileController@search')->name('profiles.search')->middleware('auth');
+    Route::resource('admin/profiles', 'App\Http\Controllers\Admin\ACL\ProfileController')->middleware('auth');
+
+
+
+    Route::prefix('admin')
+    ->namespace('Admin\ACL')
+    ->middleware('auth')
+    ->group(function(){
+    /**
+     * Plan x Profile
+     */
+    Route::get('plans/{id}/profile/{idProfile}/detach', [PlanProfileController::class, 'detachProfilePlan'])->name('plans.profile.detach');
+    Route::post('plans/{id}/profiles', [PlanProfileController::class, 'attachProfilesPlan'])->name('plans.profiles.attach');
+    Route::any('plans/{id}/profiles/create', [PlanProfileController::class, 'profilesAvailable'])->name('plans.profiles.available');
+    Route::get('plans/{id}/profiles', [PlanProfileController::class, 'profiles'])->name('plans.profiles');
+    Route::get('profiles/{id}/plans', [PlanProfileController::class, 'plans'])->name('profiles.plans');
+
+
+    //Permission x Profile
+    Route::get('profiles/{id}/permission/{idPermission}/detach', [PermissionProfileController::class, 'detachPermissionProfile'])->name('profiles.permission.detach');
+    Route::any('profiles/{id}/permissions/create', [PermissionProfileController::class, 'permissionsAvailable'])->name('profiles.permissions.available');
+    Route::post('profiles/{id}/permissions', [PermissionProfileController::class, 'attachPermissionsProfile'])->name('profiles.permissions.attach');
+    Route::get('profiles/{id}/permissions', [PermissionProfileController::class, 'permissions'])->name('profiles.permissions');
+    Route::get('permissions/{id}/profile', [PermissionProfileController::class, 'profiles'])->name('permissions.profiles');
     
+    });
+
+
 Route::prefix('admin')
         ->namespace('Admin')
+        ->middleware('auth')
         ->group(function(){
  
     //Routes Details 
@@ -73,11 +84,20 @@ Route::prefix('admin')
     //Home Dashboard
     Route::get('/', [PlanController::class, 'index'])->name('admin.index');
 });
-    //Route::resource('profiles', 'App\Http\Controllers\Admin\ACL\ProfileController');
     
-
-
-
+    //Routes create by the login
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
