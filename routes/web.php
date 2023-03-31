@@ -82,7 +82,7 @@ use App\Http\Controllers\Site\SiteController;
     Route::get('plans', [PlanController::class, 'index'])->name('plans.index');
 
     //Home Dashboard
-    //Route::get('/', [PlanController::class, 'index'])->name('admin.index');
+    Route::get('/', [PlanController::class, 'index'])->name('admin.index');
 });
     
     Route::get('/', [SiteController::class, 'index'])->name('site.home');
