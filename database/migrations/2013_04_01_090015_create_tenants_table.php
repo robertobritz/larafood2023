@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('url')->unique();
             $table->string('email')->unique();
-            $table->string('logo')->unique();
+            $table->string('logo')->nullable()->unique();
             
 
             //Status tenant (se inativa 'N' ele perde acesso ao sistema)
