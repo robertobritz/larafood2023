@@ -13,9 +13,10 @@
 
 @section('auth_header', __('adminlte::adminlte.register_message'))
 
-<p><Strong>Plano: </Strong> {{ session('plan')->name ?? '' }}</p>
-@section('auth_body')
 
+@section('auth_body')
+    <p><Strong>Plano: </Strong> {{ session('plan')->name ?? '' }}</p>
+    
     <form action="{{ route('register') }}" method="post">
         @csrf
         {{-- Tenant field --}}
