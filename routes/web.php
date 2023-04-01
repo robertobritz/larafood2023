@@ -84,18 +84,21 @@ use App\Http\Controllers\Site\SiteController;
     //Home Dashboard
     Route::get('/', [PlanController::class, 'index'])->name('admin.index');
 });
-    
+    //Site
+    Route::get('/plan/{url}', [SiteController::class, 'plan'])->name('plan.subscription');
     Route::get('/', [SiteController::class, 'index'])->name('site.home');
 
-    //Routes create by the login
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
+    //Routes create by the login
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';
