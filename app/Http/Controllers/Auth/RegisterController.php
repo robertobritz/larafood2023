@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
+
 class RegisterController extends Controller
 {
     /*
@@ -51,11 +52,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'cnpj' => ['required', 'unique:tenants'],
-            'empresa' => ['required', 'unique:tenants,name'],
+            // 'name' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'cnpj' => ['required', 'unique:tenants'],
+            // 'empresa' => ['required', 'unique:tenants,name'],
         ]);
     }
 
@@ -65,15 +66,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    public function create(array $data)
     {
-        dd('chegou');
+
         if(!$plan = session('plan')){
             return redirect()->route('site.home');
         };
 
         $tenant = $plan->tenants()->create([
-            'cnpj' => $data['cnp'],
+            'cnpj' => $data['cnpj'],
             'name' => $data['empresa'],
             'url' => Str::kebab($data['empresa']),
             'email' => $data['email'],
