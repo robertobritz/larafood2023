@@ -43,6 +43,7 @@ class UserController extends Controller
         //dd($request);
         $data = $request->all();
         $data['tenant_id'] = auth()->user()->tenant_id;
+        $data['password'] = bcrypt($data['password']); // criptografar senha
 
         
         $this->repository->create($data);
@@ -78,12 +79,18 @@ class UserController extends Controller
      */
     public function update(StoreUpdateUser $request, string $id)
     {
-        dd("esta entrando no updating");
+        
         if(!$user = $this->repository->find($id)){
             return redirect()->back();
         }
 
-        $user->update($request->all());
+        $data = $request->only(['name', 'email']);
+
+        if($request->password){
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $user->update($data);
 
         return redirect()->route('users.index');
     }
