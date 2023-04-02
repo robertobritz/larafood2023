@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+
 
 class RegisteredUserController extends Controller
 {
@@ -23,6 +25,8 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+
+
     /**
      * Handle an incoming registration request.
      *
@@ -30,6 +34,21 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+        $validator = Validator::make($request->all(), [ // funciona
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'cnpj' => ['required', 'string', 'unique:tenants'],
+            'empresa' => ['required','string', 'unique:tenants,name']
+        ]);
+
+        if ($validator->fails()) {  // não retorna 
+            return redirect('register')
+                        ->withErrors($validator)
+                        ->withInput();
+
+        }
         // Recebe os dados do formulário
         $userData = $request->all();
 
