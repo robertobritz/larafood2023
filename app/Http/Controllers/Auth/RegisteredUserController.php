@@ -36,7 +36,6 @@ class RegisteredUserController extends Controller
         // Cria um novo usuário usando o RegisterController
         $user = (new RegisterController)->create($userData);
 
-
         event(new Registered($user));
 
         Auth::login($user);
