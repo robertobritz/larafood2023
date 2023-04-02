@@ -18,7 +18,10 @@ use App\Http\Controllers\Site\SiteController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/  
+*/   //Routes Users
+
+    Route::any('admin/users/search', 'App\Http\Controllers\Admin\UserController@search')->name('users.search')->middleware('auth');
+    Route::resource('admin/users', 'App\Http\Controllers\Admin\UserController')->middleware('auth');
 
     //Routes Permission
 
