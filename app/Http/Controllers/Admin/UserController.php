@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->repository->paginate();
+        $users = $this->repository->TenantUser()->paginate();
 
         return view('admin.pages.users.index', compact('users'));
     }
@@ -56,7 +56,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        if(!$user = $this->repository->find($id)){
+        if(!$user = $this->repository->TenantUser()->find($id)){
             return redirect()->back();
         }
         return view('admin.pages.users.show', compact('user'));
@@ -67,7 +67,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        if(!$user = $this->repository->find($id)){
+        if(!$user = $this->repository->TenantUser()->find($id)){
             return redirect()->back();
         }
 
@@ -80,7 +80,7 @@ class UserController extends Controller
     public function update(StoreUpdateUser $request, string $id)
     {
         
-        if(!$user = $this->repository->find($id)){
+        if(!$user = $this->repository->TenantUser()->find($id)){
             return redirect()->back();
         }
 
@@ -100,7 +100,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if(!$user = $this->repository->find($id)){
+        if(!$user = $this->repository->TenantUser()->find($id)){
             return redirect()->back();
         }
 
@@ -121,6 +121,8 @@ class UserController extends Controller
                                 }
 
                             })
+                            ->latest()
+                            ->TenantUser()
                             ->paginate();
 
         return view('admin.pages.users.index', compact('users', 'filters'));
