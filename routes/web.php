@@ -19,6 +19,11 @@ use App\Http\Controllers\Site\SiteController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */   
+     //Routes Products
+
+     Route::any('admin/products/search', 'App\Http\Controllers\Admin\ProductController@search')->name('products.search')->middleware('auth');
+     Route::resource('admin/products', 'App\Http\Controllers\Admin\ProductController')->middleware('auth');
+
     //Routes Categories
 
     Route::any('admin/categories/search', 'App\Http\Controllers\Admin\CategoryController@search')->name('categories.search')->middleware('auth');
