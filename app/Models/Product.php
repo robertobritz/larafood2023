@@ -3,20 +3,19 @@
 namespace App\Models;
 
 use App\Tenant\Traits\TenantTrait;
-use App\Tenant\Observers\TenantObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Product extends Model
 {
     use HasFactory;
 
     use TenantTrait;
 
-    protected $fillable = ['name', 'url', 'description'];
+    protected $fillable = ['title', 'flag', 'price', 'description', 'image'];
 
-    public function products()
+    public function categories()
     {
-        $this->belongsToMany(Product::class);
+        $this->belongsToMany(Category::class);
     }
 }
