@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-body">
             <ul>
-                <img src="{{ url("storage/{$product->image}") }}" alt="{{ $product->title}}" style="max-width:200px">
+                <img img src="{{ url("storage/$product->image") }}" alt="{{ $product->title}}" style="max-width:200px">
                 <li>
                     <strong>Título: </strong> {{ $product->title}}
                 </li>

@@ -33,7 +33,7 @@
                     @foreach ($products as $product)
                         <tr>
                             <td>
-                                <img src="{{ url("storage/{$product->image}") }}" alt="{{ $product->title}}" style="max-width: 90px">
+                                <img src="{{ url("storage/$product->image") }}" alt="{{ $product->title}}" style="max-width: 90px">
                             </td>
                             <td>
                                 {{ $product->title}}
