@@ -45,10 +45,21 @@ use App\Http\Controllers\Site\SiteController;
     Route::any('admin/profiles/search', 'App\Http\Controllers\Admin\ACL\ProfileController@search')->name('profiles.search')->middleware('auth');
     Route::resource('admin/profiles', 'App\Http\Controllers\Admin\ACL\ProfileController')->middleware('auth');
 
+     /**
+     * Product x Category
+     */
+    Route::get('admin/products/{id}/category/{idCategory}/detach', 'App\Http\Controllers\Admin\CategoryProductController@detachCategoryProduct')->name('products.category.detach')->middleware('auth');
+    Route::post('admin/products/{id}/categories', 'App\Http\Controllers\Admin\CategoryProductController@attachCategoryProduct')->name('products.categories.attach')->middleware('auth');
+    Route::any('admin/products/{id}/categories/create', 'App\Http\Controllers\Admin\CategoryProductController@categoriesAvailable')->name('products.categories.available')->middleware('auth');
+    Route::get('admin/products/{id}/categories', 'App\Http\Controllers\Admin\CategoryProductController@categories')->name('products.categories')->middleware('auth');
+    Route::get('admin/categories/{id}/products', 'App\Http\Controllers\Admin\CategoryProductController@products')->name('categories.products')->middleware('auth'); 
+
+
     Route::prefix('admin')
     ->namespace('Admin\ACL')
     ->middleware('auth')
     ->group(function(){
+
     /**
      * Plan x Profile
      */
