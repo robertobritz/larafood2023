@@ -21,7 +21,7 @@ use App\Http\Controllers\Site\SiteController;
 */   
 
     Route::get('admin/test-acl', function() {
-        dd(auth()->user()->isAdmin());
+        dd(auth()->user()->permissions());
     });
     //Routes Tables
 
