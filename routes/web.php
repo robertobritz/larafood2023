@@ -19,6 +19,10 @@ use App\Http\Controllers\Site\SiteController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */   
+
+    Route::get('admin/test-acl', function() {
+        dd(auth()->user()->permissions());
+    });
     //Routes Tables
 
     Route::any('admin/tables/search', 'App\Http\Controllers\Admin\TableController@search')->name('tables.search')->middleware('auth');
