@@ -20,9 +20,6 @@ use App\Http\Controllers\Site\SiteController;
 |
 */   
 
-    Route::get('admin/test-acl', function() {
-        dd(auth()->user()->permissions());
-    });
     //Routes Tables
 
     Route::any('admin/tables/search', 'App\Http\Controllers\Admin\TableController@search')->name('tables.search')->middleware('auth');
