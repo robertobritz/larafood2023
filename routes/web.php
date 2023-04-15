@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ACL\PermissionProfileController;
 use App\Http\Controllers\Admin\ACL\PermissionRoleController;
 use App\Http\Controllers\Admin\ACL\PlanProfileController;
 use App\Http\Controllers\Admin\ACL\ProfileController;
+use App\Http\Controllers\Admin\ACL\RoleUserController;
 use App\Http\Controllers\Admin\DetailPlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PlanController;
@@ -77,6 +78,16 @@ use App\Http\Controllers\Site\SiteController;
     ->namespace('Admin\ACL')
     ->middleware('auth')
     ->group(function(){
+
+    /*
+    * Role x User
+    */
+    Route::get('users/{id}/role/{idRole}/detach', [RoleUserController::class, 'detachRoleUser'])->name('users.role.detach');
+    Route::post('users/{id}/roles', [RoleUserController::class, 'attachRolesUser'])->name('users.roles.attach');
+    Route::any('users/{id}/roles/create', [RoleUserController::class, 'rolesAvailable'])->name('users.roles.available');
+    Route::get('users/{id}/roles', [RoleUserController::class, 'roles'])->name('users.roles');
+    Route::get('roles/{id}/users', [RoleUserController::class, 'users'])->name('roles.users');    
+
 
     //Permission x Role
     Route::get('roles/{id}/permission/{idPermission}/detach', [PermissionRoleController::class, 'detachPermissionRole'])->name('roles.permission.detach');
