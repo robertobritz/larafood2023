@@ -19,6 +19,10 @@ use App\Http\Controllers\Site\SiteController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */   
+    //Routes Tenants
+
+    Route::any('admin/tenants/search', 'App\Http\Controllers\Admin\TenantController@search')->name('tenants.search')->middleware('auth');
+    Route::resource('admin/tenants', 'App\Http\Controllers\Admin\TenantController')->middleware('auth');
 
     //Routes Tables
 

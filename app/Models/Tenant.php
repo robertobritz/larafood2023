@@ -12,6 +12,7 @@ class Tenant extends Model
     protected $fillable =[
         'cnpj', 'name', 'url', 'email', 'logo', 'active',
         'subscription', 'expires_at', 'subscription_id', 'subscription_active', 'subscription_suspended',
+        'plan_id',
     ];
 
     public function users()
@@ -19,7 +20,7 @@ class Tenant extends Model
         return $this->hasMany(User::class);
     }
 
-    protected function plan()
+    public function plan()
     {
         return $this->belongsTo(Plan::class);
         
