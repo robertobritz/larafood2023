@@ -97,8 +97,8 @@ class ProductController extends Controller
         $tenant = auth()->user()->tenant;
 
         if ($request->hasFile('image') && $request->image->isValid()){
-           if (Storage::exists($product->image)){
-                Storage::delete($product->image);
+            if (Storage::disk('public')->exists($product->image)){
+                Storage::disk('public')->delete($product->image);
            }
         }
         $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products", 'public');
@@ -116,9 +116,9 @@ class ProductController extends Controller
         if (!$product = $this->repository->find($id)) {
             return redirect()->back();
         }
-        
-        if (Storage::exists($product->image)){
-            Storage::delete($product->image);
+        //dd($product->image);
+        if (Storage::disk('public')->exists($product->image)){
+            Storage::disk('public')->delete($product->image);
         }
 
         $product->delete();
