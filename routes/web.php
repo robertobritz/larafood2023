@@ -19,6 +19,12 @@ use App\Http\Controllers\Site\SiteController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */   
+    //Routes Roles
+
+    Route::any('admin/roles/search', 'App\Http\Controllers\Admin\ACL\RoleController@search')->name('roles.search')->middleware('auth');
+    Route::resource('admin/roles', 'App\Http\Controllers\Admin\ACL\RoleController')->middleware('auth');
+
+
     //Routes Tenants
 
     Route::any('admin/tenants/search', 'App\Http\Controllers\Admin\TenantController@search')->name('tenants.search')->middleware('auth');

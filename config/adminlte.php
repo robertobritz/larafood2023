@@ -310,6 +310,12 @@ return [
             'icon' => 'fas fa-address-book',
             'can'  => 'profiles',
         ],
+        [
+            'text' => 'Cargos',
+            'url'  => 'admin/roles',
+            'icon' => 'fas fa-address-card',
+            'can'  => 'roles',
+        ],
 
         [
             'text' => 'Permissões',
