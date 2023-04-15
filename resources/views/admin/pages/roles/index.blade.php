@@ -25,20 +25,20 @@
                <thead>
                 <tr>
                     <th>Nome</th>
-                    <th width="450px">Ação</th>
+                    <th width="290px">Ação</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($roles as $profile)
+                    @foreach ($roles as $role)
                         <tr>
                             <td>
-                                {{ $profile->name}}
+                                {{ $role->name}}
                             </td>
                             <td style="width=10px">
-                                {{-- <a href="{{ route('details.profile.index', $profile->id) }}" class="btn btn-primary">Detalhes</a>  --}}
-                                <a href="{{ route('roles.edit', $profile->id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('roles.show', $profile->id) }}" class="btn btn-warning">VER</a>
-                                {{-- <a href="{{ route('roles.permissions', $profile->id) }}" class="btn btn-warning">Permissão</a> --}}
+                                {{-- <a href="{{ route('details.role.index', $role->id) }}" class="btn btn-primary">Detalhes</a>  --}}
+                                <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-warning">VER</a>
+                                <a href="{{ route('roles.permissions', $role->id) }}" class="btn btn-warning">Permissão</a>
                             </td>
                         </tr>
                     @endforeach
