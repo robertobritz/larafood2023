@@ -15,7 +15,16 @@
 
 
 @section('auth_body')
-    
+        {{-- Erros na hora de cadastrar --}}
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <p><Strong>Plano: </Strong> {{ session('plan')->name ?? '' }}</p>
     
     <form action="{{ route('register') }}" method="post">
@@ -138,16 +147,7 @@
         </button>
 
     </form>
-    {{-- Erros na hora de cadastrar --}}
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+
 @stop
 
 @section('auth_footer')

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Services\TenantService;
 
 
 class RegisteredUserController extends Controller
@@ -44,21 +45,30 @@ class RegisteredUserController extends Controller
         ]);
 
         if ($validator->fails()) {  // não retorna 
+           
             return redirect('register')
-                        ->withErrors($validator)
-                        ->withInput();
+                    ->withErrors($validator);
 
         }
+
         // Recebe os dados do formulário
-        $userData = $request->all();
+        $data = $request->all();
 
-        // Cria um novo usuário usando o RegisterController
-        $user = (new RegisterController)->create($userData);
+        if(!$plan = session('plan')){
+            return redirect()->route('site.home');
+        }
 
+        
+        $tenantService = app(TenantService::class);
+
+        $user = $tenantService->make($plan, $data);
         event(new Registered($user));
 
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }
+    
 }
+
+
