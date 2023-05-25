@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Services\TenantService;
-
+use App\Tenant\Events\TenantCreated;
 
 class RegisteredUserController extends Controller
 {
@@ -62,7 +62,9 @@ class RegisteredUserController extends Controller
         $tenantService = app(TenantService::class);
 
         $user = $tenantService->make($plan, $data);
+
         event(new Registered($user));
+        event(new TenantCreated($user));
 
         Auth::login($user);
 
