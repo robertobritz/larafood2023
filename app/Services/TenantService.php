@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Plan;
 use App\Repositories\Contracts\TenantRepositoryInterface;
+use PhpParser\Node\Expr\Cast\String_;
 
 class TenantService
 {
@@ -18,6 +19,11 @@ class TenantService
     public function getAllTenants()
     {
         return $this->repository->getAllTenant();
+    }
+
+    public function getTenantByUuid(String $uuid)
+    {
+        return $this->repository->getTenantByUuid($uuid);
     }
 
     public function make(Plan $plan, array $data)
