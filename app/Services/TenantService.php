@@ -16,9 +16,9 @@ class TenantService
         $this->repository = $repository;
     }
 
-    public function getAllTenants()
+    public function getAllTenants(int $per_page)
     {
-        return $this->repository->getAllTenant();
+        return $this->repository->getAllTenant($per_page);
     }
 
     public function getTenantByUuid(String $uuid)
