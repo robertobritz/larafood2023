@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\TenantFormRequest;
 use App\Http\Resources\ProductResource;
+use App\Models\Category;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
 
@@ -25,5 +26,14 @@ class ProductApiController extends Controller
         );
 
         return ProductResource::collection($products);
+    }
+
+    public function show(TenantFormRequest $request, $flag)
+    {
+        if(!$product = $this->productService->getProductByFlag($flag)){
+            return response()->json(['message' => 'Product not Found'], 404);
+        }
+
+        return new ProductResource($product);
     }
 }

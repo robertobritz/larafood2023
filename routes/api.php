@@ -15,5 +15,5 @@ Route::get('/categories', [CategoryApiController::class, 'categoriesByTenant']);
 Route::get('/tables/{identify}', [TableApiController::class, 'show']);
 Route::get('/tables', [TableApiController::class, 'tablesByTenant']);
 
-//Route::get('/products/{identify}', [ProductApiController::class, 'show']);
+Route::get('/products/{flag}', [ProductApiController::class, 'show']);
 Route::get('/products', [ProductApiController::class, 'productsByTenant']);
