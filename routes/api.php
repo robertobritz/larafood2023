@@ -6,6 +6,12 @@ use App\Http\Controllers\Api\TableApiController;
 use App\Http\Controllers\Api\TenantApiController;
 use Illuminate\Support\Facades\Route;
 
+Route::group([
+    'prefix' => 'v1',
+    'namespace' => 'Api'
+
+], function() {
+
 Route::get('/tenants/{uuid}', [TenantApiController::class, 'show']);
 Route::get('/tenants', [TenantApiController::class, 'index']);
 
@@ -17,3 +23,5 @@ Route::get('/tables', [TableApiController::class, 'tablesByTenant']);
 
 Route::get('/products/{flag}', [ProductApiController::class, 'show']);
 Route::get('/products', [ProductApiController::class, 'productsByTenant']);
+
+});
