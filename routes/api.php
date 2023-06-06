@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\CategoryApiController;
 use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\Api\TableApiController;
@@ -23,5 +24,15 @@ Route::get('/tables', [TableApiController::class, 'tablesByTenant']);
 
 Route::get('/products/{flag}', [ProductApiController::class, 'show']);
 Route::get('/products', [ProductApiController::class, 'productsByTenant']);
+
+});
+
+Route::group([
+    'prefix' => 'v1',
+    'namespace' => 'Api\Auth'
+
+], function() {
+
+Route::post('client', [RegisterController::class, 'store']);
 
 });
