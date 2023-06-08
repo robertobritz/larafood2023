@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\DetailPlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Site\SiteController;
-
+use App\Models\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +21,12 @@ use App\Http\Controllers\Site\SiteController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */   
+Route::get('teste', function(){
+    $client = Client::first();
+
+    $token = $client->createToken('token-teste');
+    dd($token->plainTextToken);
+});
     //Routes Roles
 
     Route::any('admin/roles/search', 'App\Http\Controllers\Admin\ACL\RoleController@search')->name('roles.search')->middleware('auth');
