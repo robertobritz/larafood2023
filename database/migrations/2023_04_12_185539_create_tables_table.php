@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('tenant_id');
+            $table->uuid('uuid');
             $table->string('identify')->unique();
             $table->string('description')->nullable();
             $table->timestamps();

@@ -13,6 +13,7 @@ class CategoryObserver
     public function creating(Category $category): void
     {
         $category->url = Str::of($category->name)->kebab();
+        $category->uuid = Str::uuid();
     }
 
     /**
