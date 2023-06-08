@@ -53,6 +53,10 @@ class OrderService
 
         $identify = substr(str_shuffle($characters), 0, $qtyCaracters);
 
+        if ($this->orderRepository->getOrderByIdentify($identify)){
+            $this->getIdentifyOrder($qtyCaracters + 1);
+        };
+
         return $identify;
 
     }
