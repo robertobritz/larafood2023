@@ -18,8 +18,7 @@ use App\Observers\{
     TableObserver,
     TenantObserver
 };
-use App\Repositories\Contracts\TenantRepositoryInterface;
-use App\Repositories\TenantRepository;
+
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 

@@ -3,10 +3,10 @@
 use App\Http\Controllers\Api\Auth\AuthClientController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\CategoryApiController;
+use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\Api\TableApiController;
 use App\Http\Controllers\Api\TenantApiController;
-use App\Models\Client;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
@@ -26,6 +26,10 @@ Route::get('/tables', [TableApiController::class, 'tablesByTenant']);
 
 Route::get('/products/{identify}', [ProductApiController::class, 'show']);
 Route::get('/products', [ProductApiController::class, 'productsByTenant']);
+
+Route::post('/orders', [OrderApiController::class, 'store']);
+Route::post('/orders{identify}', [OrderApiController::class, 'show']);
+
 
 });
 
