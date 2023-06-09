@@ -23,6 +23,13 @@ class OrderService
         $this->productRepository = $productRepository;
     }
 
+    public function orderByClient()
+    {
+        $idClient = $this->getClientByOrder();
+
+        return $this->orderRepository->getOrdersByClientId($idClient);
+    }
+
     public function getOrderByIdentify(string $identify)
     {
         //dd($identify);

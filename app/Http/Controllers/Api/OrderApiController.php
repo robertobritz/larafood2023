@@ -32,4 +32,11 @@ class OrderApiController extends Controller
         //dd($order);
         return new OrderResource($order);
     }
+
+    public function myOrders()
+    {
+        $orders = $this->orderService->orderByClient();
+
+        return OrderResource::collection($orders);
+    }
 }

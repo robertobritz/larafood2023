@@ -57,28 +57,35 @@ class OrderRepository implements OrderRepositoryInterface
     {
         $orderProducts = [];
 
-        // $order = $this->entity->find($orderId); //Utilizando o Eloquent
+        $order = $this->entity->find($orderId); //Utilizando o Eloquent
 
-        // foreach ($products as $product) {
-        //     $orderProducts[$product['id']] = [
-        //         'qty' => $product['qty'],
-        //         'price' => $product['price'],
-        //     ];
-        // }
-
-        // $order->products()->attach($orderProducts); // Deu problema na relação da ordem com os produtos.
-
-        foreach ($products as $product) {  // MÉTODO USANDO A FAÇADE DB
-            array_push($orderProducts, [
-                'order_id' => $orderId,
-                'product_id' => $product['id'],
+        foreach ($products as $product) {
+            $orderProducts[$product['id']] = [
                 'qty' => $product['qty'],
                 'price' => $product['price'],
-            ]);
+            ];
         }
-        DB::table('order_product')->insert($orderProducts);
 
+        $order->products()->attach($orderProducts); // Deu problema na relação da ordem com os produtos.
 
+        // foreach ($products as $product) {  // MÉTODO USANDO A FAÇADE DB
+        //     array_push($orderProducts, [
+        //         'order_id' => $orderId,
+        //         'product_id' => $product['id'],
+        //         'qty' => $product['qty'],
+        //         'price' => $product['price'],
+        //     ]);
+        // }
+        // DB::table('order_product')->insert($orderProducts);
+    }
+    
+    public function getOrdersByClientId(int $idClient)
+    {
+        $orders = $this->entity
+                        ->where('client_id', $idClient)
+                        ->paginate();
+    
+        return $orders;
     }
     
 }
