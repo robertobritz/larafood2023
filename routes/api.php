@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\AuthClientController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\CategoryApiController;
+use App\Http\Controllers\Api\EvaluationApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\Api\TableApiController;
@@ -52,6 +53,8 @@ Route::group([
 ], function() {
     Route::get('auth/me', [AuthClientController::class, 'me']);
     Route::post('auth/logout', [AuthClientController::class, 'logout']);
+
+    Route::post('auth/v1/orders/{identify}/evaluations', [EvaluationApiController::class, 'store']);
 
     Route::get('auth/v1/my-orders', [OrderApiController::class, 'myOrders']);
     Route::post('auth/v1/orders', [OrderApiController::class, 'store']);
