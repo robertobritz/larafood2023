@@ -54,7 +54,7 @@ Route::group([
     Route::get('auth/me', [AuthClientController::class, 'me']);
     Route::post('auth/logout', [AuthClientController::class, 'logout']);
 
-    Route::post('auth/v1/orders/{identify}/evaluations', [EvaluationApiController::class, 'store']);
+    Route::post('auth/v1/orders/{identifyOrder}/evaluations', [EvaluationApiController::class, 'store']);
 
     Route::get('auth/v1/my-orders', [OrderApiController::class, 'myOrders']);
     Route::post('auth/v1/orders', [OrderApiController::class, 'store']);
