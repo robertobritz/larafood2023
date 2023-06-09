@@ -21,4 +21,9 @@ class Client extends Authenticatable
         'password',
         'tenant_id',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

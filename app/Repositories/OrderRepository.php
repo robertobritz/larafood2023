@@ -45,9 +45,12 @@ class OrderRepository implements OrderRepositoryInterface
 
     public function getOrderByIdentify(string $identify)
     {
-        return $this->entity
-                    ->where('identify', $identify)
-                    ->first();
+        $data = $this->entity // está colocando junto na consulta o tenant.
+                         ->where('identify', $identify)
+                         ->first();
+        
+
+        return($data);
     }
 
     public function registerProductsOrder(int $orderId, array $products)

@@ -23,6 +23,12 @@ class OrderService
         $this->productRepository = $productRepository;
     }
 
+    public function getOrderByIdentify(string $identify)
+    {
+        //dd($identify);
+        return $this->orderRepository->getOrderByIdentify($identify);
+    }
+
     public function createNewOrder(array $order)
     {
         $productsOrder = $this->getProductByOrder($order['products'] ?? []);
