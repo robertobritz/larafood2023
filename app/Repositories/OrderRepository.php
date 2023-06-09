@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Order;
 use App\Repositories\Contracts\OrderRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 
 class OrderRepository implements OrderRepositoryInterface
 {
@@ -47,6 +48,34 @@ class OrderRepository implements OrderRepositoryInterface
         return $this->entity
                     ->where('identify', $identify)
                     ->first();
+    }
+
+    public function registerProductsOrder(int $orderId, array $products)
+    {
+        $orderProducts = [];
+
+        // $order = $this->entity->find($orderId); //Utilizando o Eloquent
+
+        // foreach ($products as $product) {
+        //     $orderProducts[$product['id']] = [
+        //         'qty' => $product['qty'],
+        //         'price' => $product['price'],
+        //     ];
+        // }
+
+        // $order->products()->attach($orderProducts); // Deu problema na relação da ordem com os produtos.
+
+        foreach ($products as $product) {  // MÉTODO USANDO A FAÇADE DB
+            array_push($orderProducts, [
+                'order_id' => $orderId,
+                'product_id' => $product['id'],
+                'qty' => $product['qty'],
+                'price' => $product['price'],
+            ]);
+        }
+        DB::table('order_product')->insert($orderProducts);
+
+
     }
     
 }
