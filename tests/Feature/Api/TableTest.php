@@ -43,7 +43,7 @@ class TableTest extends TestCase
         $tenant = Tenant::factory()->create();
 
         $response = $this->getJson("/api/v1/tables/{$table}?token_company={$tenant->uuid}");
-        $response->dump();
+        //$response->dump();
 
         $response->assertStatus(404);
     }
@@ -57,7 +57,7 @@ class TableTest extends TestCase
         $tenant = Tenant::factory()->create();
 
         $response = $this->getJson("/api/v1/tables/{$table->uuid}?token_company={$tenant->uuid}");
-        $response->dump();
+        //$response->dump();
 
         $response->assertStatus(200);
     }

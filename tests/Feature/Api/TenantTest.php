@@ -16,7 +16,7 @@ class TenantTest extends TestCase
         Tenant::factory()->count(10)->create(); // Utilizar o Create para manter no banco de dados, o make(), não mantem no banco
 
         $response = $this->getJson('/api/v1/tenants'); // Verifica se a rota funciona
-        $response->dump(); // Serve para mostrar o retorno
+        //$response->dump(); // Serve para mostrar o retorno
 
         $response->assertStatus(200) // verifica se o retorno da rota deu certo
                     ->assertJsonCount(10, 'data'); // verifica se a array de 10 itens foi criado da maneira correta.
