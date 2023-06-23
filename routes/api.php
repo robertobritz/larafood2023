@@ -35,16 +35,16 @@ Route::get('/orders/{identify}', [OrderApiController::class, 'show']);
 });
 
 Route::group([
-    'prefix' => 'v1',
+    'prefix' => 'auth',
     'namespace' => 'Api\Auth'
 ], function() {
-Route::post('client', [RegisterController::class, 'store']);
+Route::post('register', [RegisterController::class, 'store']); // registrar
 });
 
 Route::group([
     'namespace' => 'Api\Auth'
 ], function() {
-    Route::post('sanctum/token', [AuthClientController::class, 'auth']);
+    Route::post('token', [AuthClientController::class, 'auth']); // gerar o token
 });
 
 Route::group([
