@@ -42,6 +42,7 @@ Route::post('register', [RegisterController::class, 'store']); // registrar
 });
 
 Route::group([
+    'prefix' => 'auth',
     'namespace' => 'Api\Auth'
 ], function() {
     Route::post('token', [AuthClientController::class, 'auth']); // gerar o token

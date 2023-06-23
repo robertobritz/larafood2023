@@ -29,7 +29,7 @@ class ProductTest extends TestCase
         $tenant = Tenant::factory()->create();
         $response = $this->getJson("/api/v1/products?token_company={$tenant->uuid}");
 
-        $response->dump();
+        //$response->dump();
 
         $response->assertStatus(200);
     }
