@@ -48,7 +48,7 @@ class RegisteTest extends TestCase
         ];
 
         $response = $this->postJson('/api/auth/register', $payload);
-        $response->dump();
+        //$response->dump();
 
         $response->assertStatus(201)
                     ->assertExactJson([
