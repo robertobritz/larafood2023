@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Tenant\Rules\UniqueTenant;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUpdateProduct extends FormRequest
@@ -24,7 +25,13 @@ class StoreUpdateProduct extends FormRequest
         $id = $this->segment(3);
         
         $rules = [
-            'title' => ['min:3', 'required', 'string', 'max:255', "unique:products,title,{$id},id"],
+            'title' => [
+                'min:3', 
+                'required', 
+                'string', 
+                'max:255', 
+                new UniqueTenant('products', $id),
+            ],
             'description' => ['min:3','required', 'max:500'],
             'image' => ['required', 'image'],
             'price' => "required|regex:/^\d+(\.\d{1,2})?$/",
