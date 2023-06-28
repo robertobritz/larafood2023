@@ -21,8 +21,7 @@ use App\Observers\{
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
-
-
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -50,5 +49,7 @@ class AppServiceProvider extends ServiceProvider
         Product::observe(ProductObserver::class);
         Client::observe(ClientObserver::class);
         Table::observe(TableObserver::class);
+
+
     }
 }

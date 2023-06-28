@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ACL\PermissionRoleController;
 use App\Http\Controllers\Admin\ACL\PlanProfileController;
 use App\Http\Controllers\Admin\ACL\ProfileController;
 use App\Http\Controllers\Admin\ACL\RoleUserController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DetailPlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PlanController;
@@ -150,7 +151,7 @@ Route::get('teste', function(){
     Route::get('plans', [PlanController::class, 'index'])->name('plans.index');
 
     //Home Dashboard
-    Route::get('/', [PlanController::class, 'index'])->name('admin.index');
+    Route::get('/', [DashboardController::class, 'home'])->name('admin.index');
 });
     //Site
     Route::get('/plan/{url}', [SiteController::class, 'plan'])->name('plan.subscription');
